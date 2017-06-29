@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'batches#index'
 
   devise_for :users
 
   resources :batches do
-    resources :students
+    resources :students do
+      resources :days
+    end
   end
-  resources :days
+
   resources :remarks
 end

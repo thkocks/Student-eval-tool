@@ -12,6 +12,9 @@
       <div class="col-md-7">
         <h4><%= student.first_name %> <%= student.last_name %></h4>
       </div>
+      <div class="avatar">
+        <%= link_to(image_tag(student.photo), [student.batch, student]) %>
+      </div>
       <div class="col-md-3 right">
         <%= link_to "View", [student.batch, student], class: "btn btn-default" %>
       </div>

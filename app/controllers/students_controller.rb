@@ -28,7 +28,7 @@ class StudentsController < ApplicationController
   end
 
   def edit
-
+    batch = Batch.find(params[:batch_id])
     @student = batch.students.find(params[:id])
   end
 
@@ -40,10 +40,17 @@ class StudentsController < ApplicationController
     end
   end
 
+  def destroy
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
+    @student.destroy
+  end
+
   private
 
   def set_student
-    @student = Student.find(params[:id])
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
   end
 
   def student_params
