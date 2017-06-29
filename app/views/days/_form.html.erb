@@ -1,8 +1,11 @@
 <%= form_for @batch do |f| %>
 
   <div class="form-group">
-    <label>Evaluation</label>
+    <label>Batch number</label>
     <%= f.number_field :number, placeholder: "Batch Number", class: "form-control" %>
   </div>
 
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
 <% end %>
