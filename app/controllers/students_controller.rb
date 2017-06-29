@@ -3,7 +3,8 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @students = Student.all
+    @students = batch.students
+    # @students = Student.all
   end
 
   def show; end
