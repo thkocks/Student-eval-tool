@@ -41,7 +41,7 @@ class EvaluationsController < ApplicationController
     params
       .require(:evaluation)
       .permit(
-        :eval, :date
+        :date, :color, :remark
       )
   end
 end

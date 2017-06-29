@@ -1,0 +1,21 @@
+<%= form_for @evaluation do |f| %>
+
+  <div class="form-group">
+    <label>Date</label>
+    <%= f.date_select :date, placeholder: "Date", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Color</label>
+    <%= f.number_field :number, placeholder: "Color", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Remark</label>
+    <%= f.text_field :remark, placeholder: "Remark", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
