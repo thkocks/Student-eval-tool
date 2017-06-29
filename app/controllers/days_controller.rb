@@ -3,8 +3,7 @@ class DaysController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @days = student.days
-    # @days = Day.all
+    @days = Day.all
   end
 
   def show; end

@@ -1,9 +1,9 @@
-class BatchsController < ApplicationController
+class BatchesController < ApplicationController
   before_action :set_batch, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @batchs = Batch.all
+    @batches = Batch.all
   end
 
   def show; end

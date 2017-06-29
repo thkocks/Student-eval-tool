@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= @batch.number %></div>
+
+  <div class="panel-body">
+
+    <p>Batch number: <%= @batch.number %></p>
+    <p>Start date: <%= @batch.start_date %></p>
+    <p>End date: <%= @batch.end_date %></p>
+
+    <% @batch.students.each do |student| %>
+    <div class="row">
+      <div class="col-md-7">
+        <h4><%= student.first_name %> <%= student.last_name %></h4>
+      </div>
+      <div class="col-md-3 right">
+        <%= link_to "View", student, class: "btn btn-default" %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>
+
+<%= link_to "Back", batches_path, class: "btn btn-default" %>

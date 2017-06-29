@@ -1,0 +1,12 @@
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= @student.name %></div>
+
+  <div class="panel-body">
+
+    <p>Batch <%= @student.batch.number %></p>
+
+  </div>
+
+</div>
+
+<%= link_to "Back", batches_path, class: "btn btn-default" %>
