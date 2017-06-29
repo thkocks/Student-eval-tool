@@ -3,8 +3,7 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @students = batch.students
-    # @students = Student.all
+    @students = Student.all
   end
 
   def show; end
@@ -30,10 +29,6 @@ class StudentsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def name
-    "#{first_name} #{last_name}"
   end
 
   private

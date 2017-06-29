@@ -10,7 +10,7 @@
     <% @batch.students.each do |student| %>
     <div class="row">
       <div class="col-md-7">
-        <h4><%= student.name %></h4>
+        <h4><%= student.first_name %> <%= student.last_name %></h4>
       </div>
       <div class="col-md-3 right">
         <%= link_to "View", student, class: "btn btn-default" %>

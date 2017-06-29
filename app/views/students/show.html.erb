@@ -3,10 +3,10 @@
 
   <div class="panel-body">
 
-    <p>Batch: <%= @student.batch %></p>
+    <p>Batch <%= @student.batch.number %></p>
 
   </div>
 
 </div>
 
-<%= link_to "Back", students_path, class: "btn btn-default" %>
+<%= link_to "Back", batch_path, class: "btn btn-default" %>
