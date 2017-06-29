@@ -19,9 +19,9 @@ class StudentsController < ApplicationController
 
   def create
     batch = Batch.find(params[:batch_id])
-    @student = batch.students.create(params[:student])
+    @student = batch.students.create(student_params)
     if @student.save
-      redirect_to([@student.batch, @student])
+      redirect_to([@student.batch, @students_path])
     else
       render "new"
     end
@@ -33,8 +33,11 @@ class StudentsController < ApplicationController
   end
 
   def update
-    if @Student.update(student_params)
-      redirect_to([@student.batch, @student])
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
+    if @student.update(params[:student])
+      # redirect_to([@student.batch, @student])
+      redirect_to(batch_students_path)
     else
       render :edit
     end
