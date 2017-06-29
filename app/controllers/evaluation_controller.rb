@@ -3,38 +3,57 @@ class EvaluationsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @evaluations = Evaluation.all
+    student = Student.find(params[:student_id])
+    @evaluations = student.evaluations
   end
 
-  def show; end
+  def show
+    student = Student.find(params[:student_id])
+    @evaluation = student.evaluations.find(params[:id])
+  end
 
   def new
-    @evaluation = Evaluation.new
+    student = Student.find(params[:student_id])
+    @evaluation = student.evaluations.build
   end
 
   def create
-    @evaluation = Evaluation.new(evaluation_params)
+    student = Student.find(params[:student_id])
+    @evaluation = student.evaluations.create(evaluation_params)
     if @evaluation.save
-      redirect_to @evaluation, notice: "Evaluation created"
+      redirect_to([@evaluation.student, @evaluations_path])
     else
       render "new"
     end
   end
 
-  def edit; end
+  def edit
+    student = Student.find(params[:student_id])
+    @evaluation = student.evaluations.find(params[:id])
+  end
 
   def update
-    if @Evaluation.update(evaluation_params)
-      redirect_to @evaluation, notice: "Evaluation updated"
+    student = Student.find(params[:student_id])
+    @evaluation = student.evaluations.find(params[:id])
+    if @evaluation.update(evaluation_params)
+      redirect_to([@evaluation.student, @evaluations_path])
     else
       render :edit
     end
   end
 
+  def destroy
+    student = Student.find(params[:student_id])
+    @evaluation = student.evaluations.find(params[:id])
+    @evaluation.destroy
+    redirect_to([@evaluation.student, @evaluations_path])
+  end
+
   private
 
   def set_evaluation
-    @evaluation = Evaluation.find(params[:id])
+    student = Student.find(params[:student_id])
+    @evaluation = student.evaluations.find(params[:id])
   end
 
   def evaluation_params

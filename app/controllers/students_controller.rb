@@ -3,38 +3,57 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @students = Student.all
+    batch = Batch.find(params[:batch_id])
+    @students = batch.students
   end
 
-  def show; end
+  def show
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
+  end
 
   def new
-    @student = Student.new
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.build
   end
 
   def create
-    @student = Student.new(student_params)
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.create(student_params)
     if @student.save
-      redirect_to @student, notice: "Student created"
+      redirect_to([@student.batch, @students_path])
     else
       render "new"
     end
   end
 
-  def edit; end
+  def edit
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
+  end
 
   def update
-    if @Student.update(student_params)
-      redirect_to @student, notice: "Student updated"
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
+    if @student.update(student_params)
+      redirect_to([@student.batch, @students_path])
     else
       render :edit
     end
   end
 
+  def destroy
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
+    @student.destroy
+    redirect_to([@student.batch, @students_path])
+  end
+
   private
 
   def set_student
-    @student = Student.find(params[:id])
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
   end
 
   def student_params
