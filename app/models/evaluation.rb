@@ -1,4 +1,4 @@
-class Day < ApplicationRecord
+class Evaluation < ApplicationRecord
   belongs_to :student
 
   validates :date, presence: true
