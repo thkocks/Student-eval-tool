@@ -9,4 +9,5 @@
 
 </div>
 
-<%= link_to "Back", batches_path, class: "btn btn-default" %>
+<%= link_to "Back", [@student.batch, @students_path], class: "btn btn-default" %>
+<%= link_to "Edit", [:edit, @student.batch, @student], class: "btn btn-default" %>

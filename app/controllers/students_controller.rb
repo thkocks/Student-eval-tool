@@ -35,9 +35,8 @@ class StudentsController < ApplicationController
   def update
     batch = Batch.find(params[:batch_id])
     @student = batch.students.find(params[:id])
-    if @student.update(params[:student])
-      # redirect_to([@student.batch, @student])
-      redirect_to(batch_students_path)
+    if @student.update(student_params)
+      redirect_to([@student.batch, @students_path])
     else
       render :edit
     end
