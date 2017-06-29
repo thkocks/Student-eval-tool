@@ -3,29 +3,38 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
 
   def index
-    @students = Student.all
+    batch = Batch.find(params[:batch_id])
+    @students = batch.students
   end
 
-  def show; end
+  def show
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.find(params[:id])
+  end
 
   def new
-    @student = Student.new
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.build
   end
 
   def create
-    @student = Student.new(student_params)
+    batch = Batch.find(params[:batch_id])
+    @student = batch.students.create(params[:student])
     if @student.save
-      redirect_to @student, notice: "Student created"
+      redirect_to([@student.batch, @student])
     else
       render "new"
     end
   end
 
-  def edit; end
+  def edit
+
+    @student = batch.students.find(params[:id])
+  end
 
   def update
     if @Student.update(student_params)
-      redirect_to @student, notice: "Student updated"
+      redirect_to([@student.batch, @student])
     else
       render :edit
     end

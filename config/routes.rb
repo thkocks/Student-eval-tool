@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :batches
-  resources :students
+  resources :batches do
+    resources :students
+  end
   resources :days
   resources :remarks
 end
