@@ -1,5 +1,5 @@
 class BatchesController < ApplicationController
-  before_action :set_batch, only: [:show, :edit, :update]
+  before_action :set_batch, only: [:show, :edit, :update, :delete]
   before_action :authenticate_user!, except: [:show]
 
   def index
@@ -29,6 +29,14 @@ class BatchesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @batch = Batch.find(params[:id])
+      if @batch.present?
+        @batch.destroy
+      end
+    redirect_to root_path
   end
 
   private

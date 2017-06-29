@@ -10,8 +10,8 @@
         <div class="row">
           <div class="col-md-7">
             <h4>Batch <%= batch.number %></h4>
-            <p>Start date: <%= batch.start_date %></p>
-            <p>End date: <%= batch.end_date %></p>
+            <p><%= batch.start_date %></p>
+            <p><%= batch.end_date %></p>
           </div>
           <div class="col-md-3 right">
             <%= link_to "View", batch, class: "btn btn-default" %>
@@ -21,6 +21,7 @@
 
       </div>
     </div>
+
     <%= link_to "Add a batch", new_batch_path, class: "btn btn-primary" %>
   </div>
 </div>

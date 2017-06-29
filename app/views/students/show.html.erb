@@ -4,9 +4,12 @@
   <div class="panel-body">
 
     <p>Batch <%= @student.batch.number %></p>
+    <p><%= image_tag(@student.photo) %></p>
 
   </div>
 
 </div>
 
-<%= link_to "Back", batches_path, class: "btn btn-default" %>
+<%= link_to "Back", [@student.batch, @students_path], class: "btn btn-default" %>
+<%= link_to "Edit", [:edit, @student.batch, @student], class: "btn btn-primary" %>
+<%= link_to "Delete", [@student.batch, @student], :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger" %>
