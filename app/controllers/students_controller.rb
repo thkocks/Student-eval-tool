@@ -46,6 +46,7 @@ class StudentsController < ApplicationController
     batch = Batch.find(params[:batch_id])
     @student = batch.students.find(params[:id])
     @student.destroy
+    redirect_to([@student.batch, @students_path])
   end
 
   private

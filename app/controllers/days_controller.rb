@@ -18,10 +18,10 @@ class DaysController < ApplicationController
   end
 
   def create
-    student = Student.find(params[:student_id])
+    student = Student.find(day_params)
     @day = student.days.create(params[:day])
     if @day.save
-      redirect_to([@day.student, @day])
+      redirect_to([@day.student, @day_path])
     else
       render "new"
     end
@@ -33,8 +33,10 @@ class DaysController < ApplicationController
   end
 
   def update
+    student = Student.find(params[:student_id])
+    @day = student.days.find(params[:id])
     if @Day.update(day_params)
-      redirect_to([@day.student, @day])
+      redirect_to([@day.student, @day_path])
     else
       render :edit
     end
@@ -44,6 +46,7 @@ class DaysController < ApplicationController
     student = Student.find(params[:student_id])
     @day = student.days.find(params[:id])
     @day.destroy
+    redirect_to([@day.student, @days_path])
   end
 
   private
