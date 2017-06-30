@@ -23,7 +23,7 @@ class StudentsController < ApplicationController
     if @student.save
       redirect_to([@student.batch, @students_path])
     else
-      render "new"
+      render :new
     end
   end
 
@@ -51,10 +51,17 @@ class StudentsController < ApplicationController
 
   private
 
-  def set_student
-    batch = Batch.find(params[:batch_id])
-    @student = batch.students.find(params[:id])
+  def set_batch
+    @batch = Batch.find(params[:batch_id])
   end
+
+  def set_student
+    # batch = Batch.find(params[:batch_id])
+    # @student = batch.students.find(params[:id])
+    @student = Student.find(params[:id])
+  end
+
+
 
   def student_params
     params
