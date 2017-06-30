@@ -2,7 +2,13 @@
   <div class="panel-heading"><%= @student.name %></div>
 
   <div class="panel-body">
-
+    <h3>Evaluations</h3>
+  <% if @student.evaluations.any?  %>
+  <%= render 'evaluations/index' %>
+  <% else %>
+    <p>There are no evaluations for the student</p>
+  <% end %>
+  <p> <%= link_to 'Evaluate', new_student_evaluation_path(@student, @evaluation), :class => 'btn btn-default' %></p>
     <p>Batch <%= @student.batch.number %></p>
     <p><%= image_tag(@student.photo) %></p>
 

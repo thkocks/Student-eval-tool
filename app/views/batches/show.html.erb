@@ -27,4 +27,4 @@
 
 <%= link_to "Back", batches_path, class: "btn btn-default" %>
 <%= link_to "Add a student", new_batch_student_url(@batch), class: "btn btn-primary" %>
-<%= link_to "Delete", batch_path, class: "btn btn-danger", :confirm => 'Are you sure?', method: :delete %>
+<%= link_to "Delete", batch_path, class: "btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete %>
