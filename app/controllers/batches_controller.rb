@@ -44,7 +44,7 @@ class BatchesController < ApplicationController
   def question
     @batch = Batch.find(params[:batch_id])
     student = @batch.get_student
-    flash[:alert] = "Ask a question to #{student.name}"
+    flash[:alert] = "Ask a question to #{student}"
     redirect_to batch_path(@batch)
   end
 
