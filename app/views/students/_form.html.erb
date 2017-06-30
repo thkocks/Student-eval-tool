@@ -1,4 +1,4 @@
-<%= form_for [@student.batch, @student] do |f| %>
+<%= form_for [@batch, @student] do |f| %>
   <%= render "shared/error_messages", :target => @student %>
 
   <div class="form-group">
@@ -19,4 +19,6 @@
   <div class="actions">
     <%= f.submit "Save", class: "btn btn-primary" %>
   </div>
+
+  <%= link_to "Back", batch_students_path(batch_id: @batch.id), class: "btn btn-default" %>
 <% end %>

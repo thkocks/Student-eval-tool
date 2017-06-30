@@ -10,14 +10,17 @@ class EvaluationsController < ApplicationController
   end
 
   def new
-    @evaluation = Evaluation.new
+    @student = Student.find(params[:student_id])
+    @batch = @student.batch
+    @evaluation = @student.evaluations.new
   end
 
   def create
-    @evaluation = Evaluation.new(evaluation_params)
-
+    @student = Student.find(params[:student_id])
+    @batch = @student.batch
+    @evaluation = @student.evaluations.new(evaluation_params)
     if @evaluation.save
-      redirect_to batches_path, notice: "Evaluation created"
+      redirect_to batch_student_path(batch_id: @student.batch.id, id: @student.id), notice: "Evaluation created"
     else
       render 'new'
     end
@@ -39,7 +42,6 @@ class EvaluationsController < ApplicationController
 
   def destroy
     @evaluation = Evaluation.find(params[:id])
-
     @evaluation.destroy
 
     redirect_to batches_path, notice: "Evaluation deleted"

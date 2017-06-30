@@ -2,25 +2,25 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-
-    @students = Student.all.chronological
-    @students2 = Student.order("RANDOM()")
+    @students = Student.all
   end
 
   def show
     @student = Student.find(params[:id])
-    @assessments = @student.assessments
+    @evaluations = @student.evaluations
   end
 
   def new
-    @student = Student.new
+    @batch = Batch.find(params[:batch_id])
+    @student = @batch.students.new
   end
 
   def create
-    @student = Student.new(student_params)
+    @batch = Batch.find(params[:batch_id])
+    @student = @batch.students.new(student_params)
 
     if @student.save
-      redirect_to @student, notice: "Student created"
+      redirect_to batch_student_path(batch_id: @batch, id: @student), notice: "Student created"
     else
       render 'new'
     end

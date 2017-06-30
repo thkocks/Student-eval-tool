@@ -1,22 +1,21 @@
 <div class="panel panel-primary">
-  <div class="panel-heading"><%= @batch.number %></div>
+  <div class="panel-heading">Batch <%= @batch.number %></div>
 
   <div class="panel-body">
 
-    <p>Batch number: <%= @batch.number %></p>
     <p>Start date: <%= @batch.start_date %></p>
     <p>End date: <%= @batch.end_date %></p>
 
-    <% @batch.students.each do |student| %>
+    <% @students.each do |student| %>
     <div class="row">
       <div class="col-md-7">
         <h4><%= student.first_name %> <%= student.last_name %></h4>
       </div>
       <div class="avatar">
-        <%= link_to(image_tag(student.photo), [student.batch, student]) %>
+        <%= link_to(image_tag(student.photo), batch_student_path(batch_id: @batch, id: student.id)) %>
       </div>
       <div class="col-md-3 right">
-        <%= link_to "View", [student.batch, student], class: "btn btn-default" %>
+        <%= link_to "View", batch_student_path(batch_id: @batch, id: student.id), class: "btn btn-default" %>
       </div>
     </div>
     <% end %>
@@ -26,5 +25,5 @@
 </div>
 
 <%= link_to "Back", batches_path, class: "btn btn-default" %>
-<%= link_to "Add a student", new_batch_student_url(@batch), class: "btn btn-primary" %>
-<%= link_to "Delete", batch_path, class: "btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete %>
+<%= link_to "Add a student", new_batch_student_url(@batch.id), class: "btn btn-primary" %>
+<%= link_to "Delete", batch_path(@batch.id), class: "btn btn-danger", data: { confirm: 'Are you sure?' }, method: :delete %>

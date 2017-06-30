@@ -13,8 +13,8 @@
             <p><%=  evaluation.remark %></p>
           </div>
           <div class="col-md-3 right">
-            <%= link_to 'Edit', edit_student_evaluation_path(@student.id, evaluation.id), class:'btn btn-primary' %>
-            <%= link_to 'Delete', student_evaluation_path(@student, evaluation), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
+            <%= link_to 'Edit', edit_batch_student_evaluation_path(@student.id, evaluation.id), class:'btn btn-primary' %>
+            <%= link_to 'Delete', batch_student_evaluation_path(@student.id, evaluation.id), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
         </div>
         <% end %>
 

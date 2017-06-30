@@ -3,4 +3,5 @@ class Evaluation < ApplicationRecord
 
   validates :date, presence: true
   validates :color, presence: true
+
 end

@@ -1,30 +1,31 @@
-<%= form_for ([@student, @evaluation]) do |form| %>
+<%= form_for [@batch, @student, @evaluation] do |f| %>
   <%= render "shared/error_messages", :target => @evaluation %>
 
-  <div class="form-group">
+  <div class="f-group">
     <label>Date</label>
-    <%= f.date_select :date, placeholder: "Date", class: "form-control" %>
+    <%= f.date_select :date, placeholder: "Date", class: "f-control" %>
   </div>
 
   <div class="field">
-    <%= form.radio_button(:rating, 1) %>
-    <%= form.label(:rating, "Green") %>
+    <%= f.radio_button(:color, 1) %>
+    <%= f.label(:color, "Green") %>
 
 
-    <%= form.radio_button(:rating, 2) %>
-    <%= form.label(:rating, "Yellow") %>
+    <%= f.radio_button(:color, 2) %>
+    <%= f.label(:color, "Yellow") %>
 
 
-    <%= form.radio_button(:rating, 3) %>
-    <%= form.label(:rating, "Red") %>
+    <%= f.radio_button(:color, 3) %>
+    <%= f.label(:color, "Red") %>
   </div>
 
-  <div class="form-group">
-    <label>Remark</label>
-    <%= f.text_area :remark, placeholder: "Remark", class: "form-control", rows:"8" %>
+  <div class="f-group">
+    <label></label>
+    <%= f.text_area :remark, placeholder: "Remark", class: "f-control", rows:"8" %>
   </div>
 
   <div class="actions">
     <%= f.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Back", batches_path, class: "btn btn-default" %>
   </div>
 <% end %>
