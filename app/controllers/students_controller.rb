@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update]
-  before_action :authenticate_user!, except: [:show]
+  before_action :set_batch
 
   def index
     batch = Batch.find(params[:batch_id])

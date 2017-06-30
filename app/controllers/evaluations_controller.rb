@@ -1,6 +1,6 @@
 class EvaluationsController < ApplicationController
   before_action :set_evaluation, only: [:show, :edit, :update]
-  before_action :authenticate_user!, except: [:show]
+  before_action :set_student
 
   def index
     student = Student.find(params[:student_id])

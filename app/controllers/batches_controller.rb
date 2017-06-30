@@ -36,7 +36,7 @@ class BatchesController < ApplicationController
       if @batch.present?
         @batch.destroy
       end
-    redirect_to root_path
+    redirect_to root_path, notice: "Batch deleted"
   end
 
   private
