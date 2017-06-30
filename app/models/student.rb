@@ -6,7 +6,7 @@ class Student < ApplicationRecord
   validates :last_name, presence: true
   validates :photo, presence: true
 
-  scope :order_by_first_name, -> { order(:first_name) }
+  default_scope { order(first_name: :asc) }
 
   def name
     "#{first_name} #{last_name}"

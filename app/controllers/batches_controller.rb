@@ -1,5 +1,4 @@
 class BatchesController < ApplicationController
-  before_action :set_batch, only: [:show, :edit, :update, :delete]
   before_action :authenticate_user!, except: [:show]
 
   def index
@@ -8,6 +7,7 @@ class BatchesController < ApplicationController
 
   def show
     @batch = Batch.find(params[:id])
+    @students = @batch.students
   end
 
   def new
@@ -42,10 +42,6 @@ class BatchesController < ApplicationController
   end
 
   private
-
-  def set_batch
-    @batch = Batch.find(params[:id])
-  end
 
   def batch_params
     params
