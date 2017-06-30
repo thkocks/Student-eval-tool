@@ -45,7 +45,7 @@ class StudentsController < ApplicationController
 
     @student.destroy
 
-    redirect_to students_path, notice: "Student deleted"
+    redirect_to batch_path(batch_id: @batch), notice: "Student deleted"
   end
 
   private

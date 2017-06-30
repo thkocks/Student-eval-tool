@@ -41,6 +41,13 @@ class BatchesController < ApplicationController
     redirect_to root_path, notice: "Batch deleted"
   end
 
+  def question
+    @batch = Batch.find(params[:batch_id])
+    student = @batch.get_student
+    flash[:alert] = "Ask a question to #{student.name}"
+    redirect_to batch_path(@batch)
+  end
+
   private
 
   def batch_params

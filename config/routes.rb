@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # resources :evaluations
 
   resources :batches do
+    get :question
     resources :students do
       resources :evaluations
     end

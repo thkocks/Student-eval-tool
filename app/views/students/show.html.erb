@@ -1,5 +1,5 @@
 <div class="panel panel-primary">
-  <div class="panel-heading"><%= @student.name %></div>
+  <div class="panel-heading"><%= @student.name %> - Batch <%= @student.batch.number %></div>
 
   <div class="panel-body">
     <h3>Evaluations</h3>
@@ -9,7 +9,6 @@
     <p>There are no evaluations for the student</p>
   <% end %>
       <%= link_to "Evaluate", new_batch_student_evaluation_path(batch_id: @student.batch.id, student_id: @student.id), class: "btn btn-default" %>
-    <p>Batch <%= @student.batch.number %></p>
     <p><%= image_tag(@student.photo) %></p>
 
   </div>
