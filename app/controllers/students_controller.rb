@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update]
+  before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :set_batch
 
   def index

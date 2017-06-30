@@ -10,9 +10,11 @@ class EvaluationsController < ApplicationController
 
   def show
     # student = Student.find(params[:student_id])
-    # @evaluation = student.evaluations.find(params[:id])
+    # @evaluation = student.evaluations.find(params[student_id])
     @student = Student.find(@evaluation.student_id)
-    @evaluation = Evaluation.find(params[:id])
+    # @evaluation = Evaluation.find(params[:id])
+    @evaluation = @students.evaluations.build
+    # respond_with(@student, @evaluation)
   end
 
   def new
