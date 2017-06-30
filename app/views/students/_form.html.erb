@@ -1,4 +1,5 @@
 <%= form_for [@student.batch, @student] do |f| %>
+  <%= render "shared/error_messages", :target => @student %>
 
   <div class="form-group">
     <label>First Name</label>

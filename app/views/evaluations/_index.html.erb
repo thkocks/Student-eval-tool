@@ -10,16 +10,15 @@
         <div class="row">
           <div class="col-md-7">
             <h4><%= evaluation.date %></h4>
+            <p><%=  evaluation.remark %></p>
           </div>
           <div class="col-md-3 right">
-            <%= link_to "View", evaluation, class: "btn btn-default" %>
-          </div>
+            <%= link_to 'Edit', edit_student_evaluation_path(@student.id, evaluation.id), class:'btn btn-primary' %>
+            <%= link_to 'Delete', student_evaluation_path(@student, evaluation), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
         </div>
         <% end %>
 
       </div>
     </div>
-
-    <%= link_to "Add a evaluation", new_evaluation_path, class: "btn btn-primary" %>
   </div>
 </div>

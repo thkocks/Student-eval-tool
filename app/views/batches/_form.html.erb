@@ -1,4 +1,5 @@
 <%= form_for @batch do |f| %>
+  <%= render "shared/error_messages", :target => @batch %>
 
   <div class="form-group">
     <label>Batch number</label>
