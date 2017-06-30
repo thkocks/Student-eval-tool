@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :students do
-    resources: evaluations
+    resources :evaluations
   end
 end

@@ -33,12 +33,6 @@ ActiveRecord::Schema.define(version: 20170629021635) do
     t.index ["student_id"], name: "index_evaluations_on_student_id"
   end
 
-  create_table "remarks", force: :cascade do |t|
-    t.text "notice"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "students", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
