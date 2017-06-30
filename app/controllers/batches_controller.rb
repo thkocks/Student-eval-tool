@@ -6,7 +6,9 @@ class BatchesController < ApplicationController
     @batches = Batch.all
   end
 
-  def show; end
+  def show
+    @batch = Batch.find(params[:id])
+  end
 
   def new
     @batch = Batch.new
